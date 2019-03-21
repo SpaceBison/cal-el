@@ -1,1 +1,1 @@
-include ':sample', ':lib', ':jitpacklib'
+include ':sample', ':lib'
