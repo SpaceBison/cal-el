@@ -37,6 +37,6 @@ android {
 }
 
 dependencies {
-    javatimeApi 'com.github.SpaceBison.cal-el:lib:javatime:-SNAPSHOT@aar'
-    threetenApi 'com.github.SpaceBison.cal-el:lib:threeten:-SNAPSHOT@aar'
+    javatimeApi 'com.github.SpaceBison.cal-el:lib:-SNAPSHOT:javatime@aar'
+    threetenApi 'com.github.SpaceBison.cal-el:lib:-SNAPSHOT:threeten@aar'
 }
