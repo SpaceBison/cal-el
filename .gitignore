@@ -1,6 +1,7 @@
 .idea/*
 !.idea/runConfigurations.xml
 !.idea/codeStyles
+!gradle/wrapper/gradle-wrapper.jar
 
 ### Android template
 # Built application files
