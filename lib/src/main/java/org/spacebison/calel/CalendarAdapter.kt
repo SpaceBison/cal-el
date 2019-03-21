@@ -12,7 +12,7 @@ import java.util.*
 
 abstract class CalendarAdapter<VH : MonthDayViewHolder> : RecyclerView.Adapter<CalendarItemViewHolder>() {
 
-    var firstDayOfWeek: DayOfWeek = WeekFields.of(Locale.getDefault()).getFirstDayOfWeek()
+    var firstDayOfWeek: DayOfWeek = WeekFields.of(Locale.getDefault()).firstDayOfWeek
         set(value) {
             field = value
             notifyDataSetChanged()

@@ -3,7 +3,7 @@ package org.spacebison.calel
 import android.view.ViewGroup
 import org.spacebison.calel.time.DayOfWeek
 
-abstract class DayOfWeekHeaderCalendarAdapter<DVH : MonthDayViewHolder, WVH : WeekDayViewHolder> :
+abstract class WeekDayHeaderCalendarAdapter<DVH : MonthDayViewHolder, WVH : WeekDayViewHolder> :
     CalendarAdapter<DVH>() {
 
     companion object {
