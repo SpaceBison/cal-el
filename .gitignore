@@ -1,7 +1,6 @@
 .idea/*
 !.idea/runConfigurations.xml
 !.idea/codeStyles
-!gradle/wrapper/gradle-wrapper.jar
 
 ### Android template
 # Built application files
@@ -147,3 +146,4 @@ hs_err_pid*
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+gradle-wrapper.jar
