@@ -29,7 +29,6 @@ android {
 
     flavorDimensions "jsr310"
     productFlavors {
-
         threeten {
             dimension "jsr310"
         }
@@ -39,6 +38,8 @@ android {
             minSdkVersion 26
         }
     }
+
+    defaultPublishConfig "java8Release"
 }
 
 dependencies {
