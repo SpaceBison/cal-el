@@ -3,11 +3,11 @@ package org.spacebison.calel
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.spacebison.calel.time.DayOfWeek
+import org.spacebison.calel.time.LocalDate
 import org.spacebison.calel.time.YearMonth
 import org.spacebison.calel.time.temporal.ChronoUnit
 import org.spacebison.calel.time.temporal.TemporalAdjusters
 import org.spacebison.calel.time.temporal.WeekFields
-import org.threeten.bp.LocalDate
 import java.util.*
 
 abstract class CalendarAdapter<VH : MonthDayViewHolder> : RecyclerView.Adapter<CalendarItemViewHolder>() {
