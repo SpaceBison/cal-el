@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat
 import org.spacebison.calel.DayOfMonthViewHolder
 import org.spacebison.calel.time.LocalDate
 import org.spacebison.calel.time.YearMonth
+import org.threeten.bp.Duration
 
 class SampleDayOfMonthViewHolder(parent: ViewGroup) : DayOfMonthViewHolder(parent, R.layout.item_day) {
 
@@ -25,12 +26,22 @@ class SampleDayOfMonthViewHolder(parent: ViewGroup) : DayOfMonthViewHolder(paren
                 )
             )
 
+            val firstDayOfMonth = month.atDay(1)
+            val lastDayOfMonth = month.atEndOfMonth()
+
             alpha =
-                if (!date.isBefore(month.atDay(1)) &&
-                    !date.isAfter(month.atEndOfMonth())) {
+                if (!date.isBefore(firstDayOfMonth) &&
+                    !date.isAfter(lastDayOfMonth)) {
                     1f
                 } else {
-                    0.3f
+                    val daysOutsideOfMonth =
+                        sequenceOf(
+                            Duration.between(date, lastDayOfMonth),
+                            Duration.between(date, lastDayOfMonth))
+                            .min()!!
+                            .toDays()
+
+                    0.5f - daysOutsideOfMonth * 0.05f
                 }
         }
     }

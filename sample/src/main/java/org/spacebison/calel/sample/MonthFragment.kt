@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.fragment_calendar.*
 import org.spacebison.calel.time.YearMonth
 import org.spacebison.calel.time.format.DateTimeFormatter
 
-class CalendarFragment : Fragment() {
+class MonthFragment : Fragment() {
 
     companion object {
         const val ARG_YEAR_MONTH = "year_month"
@@ -17,7 +17,7 @@ class CalendarFragment : Fragment() {
         private val headerFormat = DateTimeFormatter.ofPattern("MMMM yyyy")
 
         fun getInstance(yearMonth: YearMonth) =
-            CalendarFragment().apply {
+            MonthFragment().apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_YEAR_MONTH, yearMonth)
                 }
@@ -34,8 +34,6 @@ class CalendarFragment : Fragment() {
 
         header.text = yearMonth.format(headerFormat)
 
-        calendarRecycler.adapter = SampleMonthCalendarAdapter().apply {
-            this.month = yearMonth
-        }
+        calendarRecycler.adapter = SampleMonthCalendarAdapter().apply { this.month = yearMonth }
     }
 }

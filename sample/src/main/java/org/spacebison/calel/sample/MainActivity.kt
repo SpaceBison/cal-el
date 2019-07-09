@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun getItem(position: Int): Fragment =
-            CalendarFragment.getInstance(YearMonth.now().plusMonths((position - POSITION_ZERO).toLong()))
+            MonthFragment.getInstance(YearMonth.now().plusMonths((position - POSITION_ZERO).toLong()))
 
         override fun getCount(): Int = Int.MAX_VALUE
     }
