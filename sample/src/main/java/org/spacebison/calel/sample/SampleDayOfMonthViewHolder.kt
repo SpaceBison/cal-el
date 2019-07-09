@@ -1,19 +1,17 @@
 package org.spacebison.calel.sample
 
-import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import org.spacebison.calel.MonthDayViewHolder
+import org.spacebison.calel.DayOfMonthViewHolder
 import org.spacebison.calel.time.LocalDate
 import org.spacebison.calel.time.YearMonth
 
-class SampleMonthDayViewHolder(parent: ViewGroup) :
-    MonthDayViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_day, parent, false)) {
+class SampleDayOfMonthViewHolder(parent: ViewGroup) : DayOfMonthViewHolder(parent, R.layout.item_day) {
 
     private val dayText = itemView as TextView
 
-    override fun bind(date: LocalDate, yearMonth: YearMonth) {
+    override fun bind(date: LocalDate, month: YearMonth) {
         dayText.apply {
             text = date.dayOfMonth.toString()
             setTextColor(
@@ -28,8 +26,8 @@ class SampleMonthDayViewHolder(parent: ViewGroup) :
             )
 
             alpha =
-                if (!date.isBefore(yearMonth.atDay(1)) &&
-                    !date.isAfter(yearMonth.atEndOfMonth())) {
+                if (!date.isBefore(month.atDay(1)) &&
+                    !date.isAfter(month.atEndOfMonth())) {
                     1f
                 } else {
                     0.3f

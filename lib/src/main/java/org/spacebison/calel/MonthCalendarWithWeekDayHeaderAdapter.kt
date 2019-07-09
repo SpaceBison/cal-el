@@ -1,10 +1,17 @@
 package org.spacebison.calel
 
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import org.spacebison.calel.time.DayOfWeek
 
-abstract class WeekDayHeaderCalendarAdapter<DVH : MonthDayViewHolder, WVH : WeekDayViewHolder> :
-    CalendarAdapter<DVH>() {
+/**
+ * A [MonthCalendarAdapter] with week day column headers.
+ *
+ * @param DVH Date ViewHolder type
+ * @param WVH Week day header ViewHolder type
+ */
+abstract class MonthCalendarWithWeekDayHeaderAdapter<DVH : DayOfMonthViewHolder, WVH : WeekDayHeaderViewHolder> :
+    MonthCalendarAdapter<DVH>() {
 
     companion object {
         protected object ViewType {
@@ -19,7 +26,7 @@ abstract class WeekDayHeaderCalendarAdapter<DVH : MonthDayViewHolder, WVH : Week
 
     abstract fun onCreateWeekDayViewHolder(parent: ViewGroup): WVH
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarItemViewHolder =
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         when (viewType) {
             ViewType.DAY_OF_MONTH -> onCreateMonthDayViewHolder(parent)
             ViewType.DAY_OF_WEEK -> onCreateWeekDayViewHolder(parent)
@@ -31,18 +38,18 @@ abstract class WeekDayHeaderCalendarAdapter<DVH : MonthDayViewHolder, WVH : Week
     override fun getItemViewType(position: Int): Int =
         if (position < daysOfWeekCount) ViewType.DAY_OF_WEEK else ViewType.DAY_OF_MONTH
 
-    override fun onBindViewHolder(holder: CalendarItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
-            ViewType.DAY_OF_MONTH -> bindMonthDayViewHolder(holder, position - daysOfWeekCount)
-            ViewType.DAY_OF_WEEK -> bindWeekDayViewHolder(holder, position)
+            ViewType.DAY_OF_MONTH -> bindMonthDayViewHolder(holder as DVH, position - daysOfWeekCount)
+            ViewType.DAY_OF_WEEK -> bindWeekDayViewHolder(holder as WVH, position)
         }
     }
 
     open protected fun onBindWeekDayViewHolder(holder: WVH, dayOfWeek: DayOfWeek) {
-        holder.bind(dayOfWeek, yearMonth)
+        holder.bind(dayOfWeek, month)
     }
 
-    protected fun bindWeekDayViewHolder(holder: CalendarItemViewHolder, position: Int) {
-        onBindWeekDayViewHolder(holder as WVH, firstDayOfWeek.plus(position.toLong()))
+    protected fun bindWeekDayViewHolder(holder: WVH, position: Int) {
+        onBindWeekDayViewHolder(holder, firstDayOfWeek.plus(position.toLong()))
     }
 }

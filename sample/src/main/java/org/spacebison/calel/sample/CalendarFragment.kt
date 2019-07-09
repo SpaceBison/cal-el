@@ -34,8 +34,8 @@ class CalendarFragment : Fragment() {
 
         header.text = yearMonth.format(headerFormat)
 
-        calendarRecycler.adapter = SampleCalendarAdapter().apply {
-            this.yearMonth = yearMonth
+        calendarRecycler.adapter = SampleMonthCalendarAdapter().apply {
+            this.month = yearMonth
         }
     }
 }
